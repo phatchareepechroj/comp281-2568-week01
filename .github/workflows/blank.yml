@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Canvas 2D Graphics</title>
+  <style>
+    body { text-align: center; }
+    canvas { border: 1px solid black; }
+  </style>
+</head>
+<body>
+  <h2>Assignment 01: Canvas 2D Graphics</h2>
+  <canvas id="myCanvas" width="600" height="400"></canvas>
+
+  <script>
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+
+    // ===== Sky =====
+    ctx.fillStyle = "#87CEEB"; // ฟ้าอ่อน
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // ===== Sun =====
+    ctx.beginPath();
+    ctx.arc(450, 80, 40, 0, Math.PI * 2); 
+    ctx.fillStyle = "yellow";
+    ctx.fill();
+    ctx.strokeStyle = "red";
+    ctx.lineWidth = 5;
+    ctx.stroke();
+
+    // ===== Birds =====
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(100, 80, 15, Math.PI, 2 * Math.PI);
+    ctx.arc(130, 80, 15, Math.PI, 2 * Math.PI);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(160, 60, 10, Math.PI, 2 * Math.PI);
+    ctx.arc(180, 60, 10, Math.PI, 2 * Math.PI);
+    ctx.stroke();
+
+    // ===== Mountains =====
+    ctx.fillStyle = "limegreen";
+    ctx.beginPath();
+    ctx.moveTo(0, 200);
+    ctx.lineTo(200, 100);
+    ctx.lineTo(400, 200);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(200, 200);
+    ctx.lineTo(400, 120);
+    ctx.lineTo(600, 200);
+    ctx.closePath();
+    ctx.fill();
+
+    // ===== River =====
+    ctx.fillStyle = "#1E90FF";
+    ctx.beginPath();
+    ctx.moveTo(250, 200);
+    ctx.bezierCurveTo(300, 250, 350, 300, 280, 400);
+    ctx.lineTo(350, 400);
+    ctx.bezierCurveTo(400, 300, 350, 250, 300, 200);
+    ctx.closePath();
+    ctx.fill();
+
+    // ===== Ground =====
+    ctx.fillStyle = "#228B22"; // เขียวเข้ม
+    ctx.fillRect(0, 200, 600, 200);
+
+    // ===== Tree =====
+    // trunk
+    ctx.fillStyle = "sienna";
+    ctx.fillRect(80, 280, 20, 60);
+    // leaves
+    ctx.beginPath();
+    ctx.arc(90, 270, 30, 0, Math.PI * 2);
+    ctx.fillStyle = "green";
+    ctx.fill();
+
+    // ===== House =====
+    // body
+    ctx.fillStyle = "#8B4513";
+    ctx.fillRect(450, 260, 80, 80);
+    // roof
+    ctx.beginPath();
+    ctx.moveTo(440, 260);
+    ctx.lineTo(490, 210);
+    ctx.lineTo(540, 260);
+    ctx.closePath();
+    ctx.fillStyle = "brown";
+    ctx.fill();
+    // door
+    ctx.fillStyle = "black";
+    ctx.fillRect(485, 300, 30, 40);
+  </script>
+</body>
+</html>
